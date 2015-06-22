@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+
+// S=3!-!6+!9-...+(-1)^(n+1)*(3n)!
+
+void suma(unsigned int, int &);
+int faktorijel(unsigned int);
+int clanovi(int);
+void main()
+{
+	int c = 0;
+	unsigned int n = 0;
+	int SUM;
+	cout << "Unesite varijablu n:" << endl;
+	cin >> n;
+//	cout << pow(-1, n + 1) << endl;; -test
+//	cout << faktorijel(n) << endl;; -test
+//	cout << clanovi(n) << endl;; -test
+	suma(n, SUM);
+	cout << SUM << endl;
+	system("PAUSE>0");
+}
+
+int faktorijel(unsigned int a)
+{
+	int fakt = 1;
+	for (int i = 1; i <= a; i++)
+		fakt *= i;
+	return fakt;
+}
+int clanovi(int a)
+{
+	int zbir = 0;
+	zbir = pow(-1, (a + 1)) * faktorijel((3 * a));
+	return zbir;
+}
+void suma(unsigned int a, int & b)
+{
+	int zbir = 0;
+	for (int i = 1; i <= a; i++)
+		zbir += clanovi(i);
+	b = zbir;
+}
